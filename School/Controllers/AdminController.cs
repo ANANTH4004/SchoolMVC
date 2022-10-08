@@ -8,6 +8,10 @@ namespace School.Controllers
 {
     public class AdminController : Controller
     {
+        public ActionResult test()
+        {
+            return View();
+        }
         // GET: Admin
         public ActionResult Index()
         {
