@@ -170,7 +170,9 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\LOGO.png" />
+    <Content Include="Images\pngtree-school-school-background-picture-image_348548.jpg" />
     <Content Include="Images\school.png" />
+    <Content Include="Images\SchoolL.jpg" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -190,6 +192,7 @@
     <Content Include="Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="Images\watercolor-back-school-background-with-white-space_52683-41450.webp" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -218,6 +221,9 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared\_SchoolLayout.cshtml" />
     <Content Include="Views\Admin\test.cshtml" />
+    <Content Include="Views\Admin\StartPage.cshtml" />
+    <Content Include="Views\Admin\CreateStudent.cshtml" />
+    <Content Include="Views\Admin\Student.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

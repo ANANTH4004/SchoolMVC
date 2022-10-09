@@ -8,7 +8,16 @@ namespace School.Controllers
 {
     public class AdminController : Controller
     {
-        public ActionResult test()
+        SchoolDBEntities scl = null;
+        public AdminController()
+        {
+            scl = new SchoolDBEntities();
+        }
+
+        public ActionResult StartPage()
+        {
+            return View();
+        } public ActionResult test()
         {
             return View();
         }
@@ -16,6 +25,16 @@ namespace School.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+        public ActionResult Student()
+        {
+            List<Student> students = new List<Student>();
+           // Student s = new Student();
+            foreach (var item in scl.Students)
+            {
+                students.Add(new Student { RollNo = item.RollNo, Name = item.Name, DOB = item.DOB, Class = item.Class });
+            }
+            return View(students);
         }
         //[HttpPost]
         //public ActionResult Index(FormCollection collection)
