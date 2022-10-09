@@ -22,7 +22,7 @@ namespace School
     
         public int SubjectId { get; set; }
         public string SubjectName { get; set; }
-        public string Duration { get; set; }
+        public int Duration { get; set; }
         public int ClassNo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

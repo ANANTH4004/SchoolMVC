@@ -13,34 +13,24 @@ namespace School.Controllers
         {
             scl = new SchoolDBEntities();
         }
-
-        public ActionResult StartPage()
+        public ActionResult test()
         {
             return View();
-        } public ActionResult test()
+        }
+        public ActionResult StartPage()
         {
             return View();
         }
         // GET: Admin
-        public ActionResult Index()
-        {
-            return View();
-        }
         public ActionResult Student()
         {
             List<Student> students = new List<Student>();
-           // Student s = new Student();
             foreach (var item in scl.Students)
             {
-                students.Add(new Student { RollNo = item.RollNo, Name = item.Name, DOB = item.DOB, Class = item.Class });
+                students.Add(new Student { RollNo= item.RollNo,Name=item.Name,DOB=item.DOB,ClassNo=item.ClassNo ,Class= item.Class});
             }
             return View(students);
         }
-        //[HttpPost]
-        //public ActionResult Index(FormCollection collection)
-        //{
-        //    return View();
-        //}
 
         // GET: Admin/Details/5
         public ActionResult Details(int id)
@@ -60,9 +50,14 @@ namespace School.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                Student s = new Student();
+                s.RollNo =Int32.Parse( Request["RollNo"]);
+                s.Name = Request["Name"];
+                s.DOB = DateTime.Parse(Request["DOB"]);
+                s.ClassNo = Int32.Parse(Request["ClassNo"]);
+                scl.Students.Add(s);
+                scl.SaveChanges();
+                return RedirectToAction("Student");
             }
             catch
             {
@@ -71,20 +66,24 @@ namespace School.Controllers
         }
 
         // GET: Admin/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult EditStudent(int id)
         {
-            return View();
+            Student s = scl.Students.ToList().Find(temp => temp.RollNo == id);
+            return View(s);
         }
 
         // POST: Admin/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult EditStudent(int id, FormCollection collection)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                Student s = scl.Students.ToList().Find(temp => temp.RollNo == id);
+                s.DOB =DateTime.Parse( Request["DOB"]);
+                s.Name = Request["Name"];
+                s.ClassNo = Int32.Parse(Request["ClassNo"]);
+                scl.SaveChanges();
+                return RedirectToAction("Student");
             }
             catch
             {

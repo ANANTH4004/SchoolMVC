@@ -12,16 +12,16 @@
           <Property Name="ClassNo" Type="int" Nullable="false" />
           <Property Name="RoomNo" Type="int" Nullable="false" />
           <Property Name="Strength" Type="int" Nullable="false" />
-          <Property Name="ClassTeacher" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ClassTeacher" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Students">
           <Key>
             <PropertyRef Name="RollNo" />
           </Key>
           <Property Name="RollNo" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="DOB" Type="datetime" Nullable="false" />
-          <Property Name="ClassClassNo" Type="int" Nullable="false" />
+          <Property Name="ClassNo" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="SubjectClass">
           <Key>
@@ -36,8 +36,8 @@
             <PropertyRef Name="SubjectId" />
           </Key>
           <Property Name="SubjectId" Type="int" Nullable="false" />
-          <Property Name="SubjectName" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Duration" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SubjectName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Duration" Type="int" Nullable="false" />
           <Property Name="ClassNo" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_ClassStudent">
@@ -48,7 +48,7 @@
               <PropertyRef Name="ClassNo" />
             </Principal>
             <Dependent Role="Students">
-              <PropertyRef Name="ClassClassNo" />
+              <PropertyRef Name="ClassNo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -106,7 +106,7 @@
           <Property Name="ClassNo" Type="Int32" Nullable="false" />
           <Property Name="RoomNo" Type="Int32" Nullable="false" />
           <Property Name="Strength" Type="Int32" Nullable="false" />
-          <Property Name="ClassTeacher" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClassTeacher" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Students" Relationship="Self.FK_ClassStudent" FromRole="Classes" ToRole="Students" />
           <NavigationProperty Name="Subjects" Relationship="Self.SubjectClass" FromRole="Classes" ToRole="Subjects" />
         </EntityType>
@@ -115,9 +115,9 @@
             <PropertyRef Name="RollNo" />
           </Key>
           <Property Name="RollNo" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DOB" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ClassClassNo" Type="Int32" Nullable="false" />
+          <Property Name="ClassNo" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Class" Relationship="Self.FK_ClassStudent" FromRole="Students" ToRole="Classes" />
         </EntityType>
         <EntityType Name="Subject">
@@ -125,8 +125,8 @@
             <PropertyRef Name="SubjectId" />
           </Key>
           <Property Name="SubjectId" Type="Int32" Nullable="false" />
-          <Property Name="SubjectName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Duration" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SubjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Duration" Type="Int32" Nullable="false" />
           <Property Name="ClassNo" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Classes" Relationship="Self.SubjectClass" FromRole="Subjects" ToRole="Classes" />
         </EntityType>
@@ -138,7 +138,7 @@
               <PropertyRef Name="ClassNo" />
             </Principal>
             <Dependent Role="Students">
-              <PropertyRef Name="ClassClassNo" />
+              <PropertyRef Name="ClassNo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -181,7 +181,7 @@
                 <ScalarProperty Name="RollNo" ColumnName="RollNo" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="DOB" ColumnName="DOB" />
-                <ScalarProperty Name="ClassClassNo" ColumnName="ClassClassNo" />
+                <ScalarProperty Name="ClassNo" ColumnName="ClassNo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

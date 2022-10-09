@@ -11,13 +11,19 @@ namespace School
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Student
     {
+        [Required]
         public int RollNo { get; set; }
+        [Required]
         public string Name { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
         public System.DateTime DOB { get; set; }
-        public int ClassClassNo { get; set; }
+        [Required]
+        public int ClassNo { get; set; }
     
         public virtual Class Class { get; set; }
     }
