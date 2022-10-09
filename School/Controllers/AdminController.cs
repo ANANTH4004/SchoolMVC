@@ -114,5 +114,62 @@ namespace School.Controllers
                 return View();
             }
         }
+        public ActionResult Class()
+        {
+            List<Class> classes = new List<Class>();
+            classes = scl.Classes.ToList();
+            return View(classes);
+        }
+
+        public ActionResult ClassCreate()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ClassCreate(FormCollection collection)
+        {
+            Class c = new Class();
+            c.ClassNo = Int32.Parse(Request["ClassNo"]);
+            c.RoomNo = Int32.Parse(Request["RoomNo"]);
+            c.Strength = Int32.Parse(Request["Strength"]);
+            c.ClassTeacher = Request["ClassTeacher"];
+            scl.Classes.Add(c);
+            scl.SaveChanges();
+            return RedirectToAction("Class");
+        }
+        public ActionResult ClassEdit(int id)
+        {
+           Class c = scl.Classes.ToList().Find(temp => temp.ClassNo == id);
+            return View(c); 
+        }
+        [HttpPost]
+        public ActionResult ClassEdit(int id,FormCollection collection)
+        {
+            Class c = scl.Classes.ToList().Find(temp => temp.ClassNo == id);
+            c.ClassNo = Int32.Parse(Request["ClassNo"]);
+            c.RoomNo = Int32.Parse(Request["RoomNo"]);
+            c.Strength = Int32.Parse(Request["Strength"]);
+            c.ClassTeacher = Request["ClassTeacher"];
+            scl.SaveChanges();
+            return RedirectToAction("Class");
+        }
+        public ActionResult ClassDetails(int id)
+        {
+            Class c = scl.Classes.ToList().Find(temp => temp.ClassNo == id);
+            return View(c);
+        }
+        public ActionResult ClassDelete(int id)
+        {
+            Class c = scl.Classes.ToList().Find(temp => temp.ClassNo == id);
+            return View(c);
+        }
+        [HttpPost]
+        public ActionResult ClassDelete(int id , FormCollection collection)
+        {
+            Class c = scl.Classes.ToList().Find(temp => temp.ClassNo == id);
+            scl.Classes.Remove(c);
+            scl.SaveChanges();
+            return RedirectToAction("Class");
+        }
     }
 }
