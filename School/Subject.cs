@@ -11,7 +11,8 @@ namespace School
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Subject
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,10 +20,16 @@ namespace School
         {
             this.Classes = new HashSet<Class>();
         }
-    
+
+        [Required]
         public int SubjectId { get; set; }
+        [Required]
+        [MaxLength(20,ErrorMessage ="Maximum lenght is 20")]
+        [MinLength(4,ErrorMessage ="Min Length is 4")]
         public string SubjectName { get; set; }
+        [Required]
         public int Duration { get; set; }
+        [Required]
         public int ClassNo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

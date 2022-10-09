@@ -228,6 +228,12 @@
     <Content Include="Views\Admin\ClassEdit.cshtml" />
     <Content Include="Views\Admin\ClassDetails.cshtml" />
     <Content Include="Views\Admin\ClassDelete.cshtml" />
+    <Content Include="Views\Shared\_SubjectLayout.cshtml" />
+    <Content Include="Views\Admin\Subject.cshtml" />
+    <Content Include="Views\Admin\CreateSubject.cshtml" />
+    <Content Include="Views\Admin\EditSubject.cshtml" />
+    <Content Include="Views\Admin\DetailsSubject.cshtml" />
+    <Content Include="Views\Admin\DeleteSubject.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

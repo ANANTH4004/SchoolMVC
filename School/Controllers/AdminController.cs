@@ -171,5 +171,66 @@ namespace School.Controllers
             scl.SaveChanges();
             return RedirectToAction("Class");
         }
+        public ActionResult Subject()
+        {
+            List<Subject> subjects = new List<Subject>();
+            subjects = scl.Subjects.ToList();
+            return View(subjects);
+        }
+        public ActionResult CreateSubject()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CreateSubject(FormCollection collection)
+        {
+            Subject subject = new Subject();
+            subject.SubjectId = Int32.Parse(Request["SubjectId"]);
+            subject.SubjectName = Request["SubjectName"];
+            subject.ClassNo = Int32.Parse(Request["ClassNo"]);
+            subject.Duration = Int32.Parse(Request["Duration"]);
+            scl.Subjects.Add(subject);  
+            scl.SaveChanges();
+            return RedirectToAction("Subject");;
+        }
+
+        //*****************************************************************************************
+        public ActionResult EditSubject(int id)
+        {
+            Subject c = scl.Subjects.ToList().Find(temp => temp.SubjectId == id);
+            return View(c);
+        }
+        [HttpPost]
+        public ActionResult EditSubject(int id, FormCollection collection)
+        {
+            Subject c = scl.Subjects.ToList().Find(temp => temp.SubjectId == id);
+            c.SubjectId =Convert.ToInt32(Request["SubjectId"]);
+            c.ClassNo = Int32.Parse(Request["ClassNo"]);
+            c.Duration = Int32.Parse(Request["Duration"]);
+            c.SubjectName = Request["SubjectName"];
+            scl.SaveChanges();
+            return RedirectToAction("Subject");
+        }
+        //***************************************************************************************
+        public ActionResult DetailsSubject(int id)
+        {
+            Subject c = scl.Subjects.ToList().Find(temp => temp.SubjectId == id);
+            return View(c);
+        }
+        public ActionResult Deletesubject(int id)
+        {
+            Subject c = scl.Subjects.ToList().Find(temp => temp.SubjectId == id);
+            return View(c);
+        }
+        [HttpPost]
+        public ActionResult DeleteSubject(int id, FormCollection collection)
+        {
+            Subject c = scl.Subjects.ToList().Find(temp => temp.SubjectId == id);
+            scl.Subjects.Remove(c);
+            scl.SaveChanges();
+            return RedirectToAction("Subject");
+        }
+
     }
+
 }
