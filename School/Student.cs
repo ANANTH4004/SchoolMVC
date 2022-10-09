@@ -19,8 +19,9 @@ namespace School
         public int RollNo { get; set; }
         [Required]
         public string Name { get; set; }
+        [Required]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-        [DataType(DataType.Date)]
+       // [DataType(DataType.Date)]
         public System.DateTime DOB { get; set; }
         [Required]
         public int ClassNo { get; set; }

@@ -11,7 +11,8 @@ namespace School
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Class
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,10 +21,14 @@ namespace School
             this.Students = new HashSet<Student>();
             this.Subjects = new HashSet<Subject>();
         }
-    
+
+        [Required]
         public int ClassNo { get; set; }
+        [Required]  
         public int RoomNo { get; set; }
+        [Required]
         public int Strength { get; set; }
+        [Required]
         public string ClassTeacher { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

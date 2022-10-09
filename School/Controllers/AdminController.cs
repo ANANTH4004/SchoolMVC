@@ -33,9 +33,9 @@ namespace School.Controllers
         }
 
         // GET: Admin/Details/5
-        public ActionResult Details(int id)
+        public ActionResult DetailsStudent(int id)
         {
-            return View();
+            return View(scl.Students.ToList().Find(temp => temp.RollNo == id));
         }
 
         // GET: Admin/Create
@@ -76,36 +76,38 @@ namespace School.Controllers
         [HttpPost]
         public ActionResult EditStudent(int id, FormCollection collection)
         {
-            try
-            {
-                Student s = scl.Students.ToList().Find(temp => temp.RollNo == id);
+            //try
+            //{
+               Student s = scl.Students.ToList().Find(temp => temp.RollNo == id);
                 s.DOB =DateTime.Parse( Request["DOB"]);
                 s.Name = Request["Name"];
                 s.ClassNo = Int32.Parse(Request["ClassNo"]);
                 scl.SaveChanges();
                 return RedirectToAction("Student");
-            }
-            catch
-            {
-                return View();
-            }
+           // }
+            //catch
+            //{
+            //    return View();
+            //}
         }
 
         // GET: Admin/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult DeleteStudent(int id)
         {
-            return View();
+            Student s = scl.Students.ToList().Find(temp => temp.RollNo == id);
+            return View(s);
         }
 
         // POST: Admin/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult DeleteStudent(int id, FormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                Student s = scl.Students.ToList().Find(temp => temp.RollNo == id);
+                scl.Students.Remove(s);
+                scl.SaveChanges();
+                return RedirectToAction("Student");
             }
             catch
             {
