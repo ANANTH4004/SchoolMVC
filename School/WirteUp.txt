@@ -1,6 +1,6 @@
 ﻿
-
-
+			GitHub Link : https://github.com/ANANTH4004/SchoolMVC
+**************************************************************************************************************
 Step 1 : I used Entity framework - DB first Approach for this Project. School Database is already there which I 
 		  Created for MSSQL Project. 
 
